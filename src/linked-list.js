@@ -72,43 +72,43 @@ class LinkedList {
     }
     clear() {   //++
         this.length = 0;
-        this._head.data = null;
-        this._tail.data = null;
+        this._head = null;
+        this._tail = null;
         return this;
     }
     deleteAt(index) {  //++
         var currentNode = this._head;
         var count = 0;
-        var temp = 0;
+        //var temp = 0;
         if (index < 0 || index > this.length){
-                return null;
+            return this;
         }
         else if (index === 0){
             if (this._head == null){
-                return null;
+                return this;
             }
             else{
-                temp = this._head;
+                //temp = this._head;
                 if (this._head.next != null){
                     this._head.next.prev = null;
                 }
                 this._head = this._head.next;
                 count--;
-                return temp;
+                return this;
                 }
         }
         else if (index === this.length){
             if (this._tail === null){
-                return null;
+                return this;
             }
             else{
-                temp = this._tail;
+                //temp = this._tail;
                 if (this._tail.prev != null){
                     this._tail.prev.next = null;
                 }
                 this._tail = this._tail.prev;
                 count--;
-                return temp;
+                return this;
             }
         }
         else{
@@ -148,14 +148,8 @@ class LinkedList {
                 currentNode = currentNode.next;
           }
           return -1;
-        }
-    /*forEach(fn) {
-        var node = this._head;
-        while (node) {
-            fn(node.data);
-            node = node._next;
-        }
-    }*/
+    }
+    
 }
 
 module.exports = LinkedList;
